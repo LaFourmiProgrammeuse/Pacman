@@ -26,8 +26,9 @@ Level_Editor::Level_Editor(Level *level, Controller *controller)
     right_arrow_sprite_menu.setTexture(right_arrow_texture);
     right_arrow_sprite_menu.setScale(1.5, 1.5);
 
-    tsw_page_texture.LoadFont("D:/Programmation/Fichier ressource(image,ect)/Police/JAi_____.ttf");
-    tsw_page_texture.setCharacterSize(22);
+    tsw_page_texture = new Text_Switch_Widget;
+    tsw_page_texture->LoadFont("D:/Programmation/Fichier ressource(image,ect)/Police/JAi_____.ttf");
+    tsw_page_texture->setCharacterSize(22);
 
     /* FONT */
 
@@ -407,7 +408,7 @@ Level_Editor::Level_Editor(Level *level, Controller *controller)
     page_1->setFillColor(sf::Color::White);
     page_1->setString("Page 1");
 
-    tsw_page_texture.AddString(page_1);
+    tsw_page_texture->AddString(page_1);
 
     int x = 1;
     int y = 1;
@@ -463,7 +464,7 @@ Level_Editor::Level_Editor(Level *level, Controller *controller)
             new_page->setFillColor(sf::Color::White);
             new_page->setString(sf::String("Page "+QString::number(page_number).toStdString()));
 
-            tsw_page_texture.AddString(new_page);
+            tsw_page_texture->AddString(new_page);
 
             //continue;
         }
@@ -476,23 +477,25 @@ Level_Editor::Level_Editor(Level *level, Controller *controller)
             y++;
         }
     }
-    tsw_page_texture.setPosition(1214, 406);
+    tsw_page_texture->setPosition(1214, 406); qDebug() << "test4";
 
     /* BORDER PAGE TEXTURE INIT */
 
-    border_page_texture.setSize(sf::Vector2f(173, 262));
-    border_page_texture.setFillColor(sf::Color::Transparent);
-    border_page_texture.setOutlineColor(sf::Color::Cyan);
-    border_page_texture.setOutlineThickness(1);
-    border_page_texture.setPosition(1127, 170);
+    border_page_texture = new sf::RectangleShape;
+    border_page_texture->setSize(sf::Vector2f(173, 262));
+    border_page_texture->setFillColor(sf::Color::Transparent);
+    border_page_texture->setOutlineColor(sf::Color::Cyan);
+    border_page_texture->setOutlineThickness(1);
+    border_page_texture->setPosition(1127, 170);
 
     /* BUTTON WIDGET INIT */
 
-    bw_back.setString("Retour au menu");
-    bw_back.setTextColor(sf::Color::White);
-    bw_back.LoadFont("D:/Programmation/Fichier ressource(image,ect)/Police/Dimis___.ttf");
-    bw_back.setCharacterSize(28);
-    bw_back.setPosition(sf::Vector2f(125, 480));
+    bw_back = new Button_Widget;
+    bw_back->setString("Retour au menu");
+    bw_back->setTextColor(sf::Color::White);
+    bw_back->LoadFont("D:/Programmation/Fichier ressource(image,ect)/Police/Dimis___.ttf");
+    bw_back->setCharacterSize(28);
+    bw_back->setPosition(sf::Vector2f(125, 480));
 
     Button_Widget *bw_menu_place_tile = new Button_Widget;
     bw_menu_place_tile->setTextColor(sf::Color::White);
@@ -548,7 +551,7 @@ Level_Editor::Level_Editor(Level *level, Controller *controller)
     border_right_grid.setFillColor(sf::Color::White);
     border_right_grid.setPosition(1115, 0);
 
-    sprite_to_set = *list_texture_sprite[DEFAULT_TEXTURE];
+    //sprite_to_set = *list_texture_sprite[DEFAULT_TEXTURE];
     sprite_set = true;
 
 }
@@ -646,7 +649,7 @@ void Level_Editor::DrawMainWindow(sf::RenderWindow *window){
 
     /* BUTTON_WIDGET DRAW : page x, page 0 */
 
-    window->draw(bw_back);
+    window->draw(*bw_back);
 
     for(int i = 0; i < list_bw_menu_editor.size(); i++){
         window->draw(*list_bw_menu_editor[i]);
@@ -658,7 +661,7 @@ void Level_Editor::DrawMainWindow(sf::RenderWindow *window){
 
     /* PART PAGE TEXTURE DRAW  : page 0 */
 
-    if(page_menu == 0){
+    /*if(page_menu == 0){
 
         sprite_to_set.setScale(3, 3);
 
@@ -668,9 +671,9 @@ void Level_Editor::DrawMainWindow(sf::RenderWindow *window){
 
         window->draw(frame_sprite_to_set);
         window->draw(sprite_to_set);
-        window->draw(tsw_page_texture);
+        //window->draw(*tsw_page_texture);
 
-        window->draw(border_page_texture);
+        window->draw(*border_page_texture);
 
         for(int i = (page_texture*8); i < list_texture_sprite.size() && i < (page_texture*8)+8; i++){
             window->draw(*list_texture_sprite[i]);
@@ -682,11 +685,11 @@ void Level_Editor::DrawMainWindow(sf::RenderWindow *window){
         }
 
         window->draw(bw_clear_tile);
-    }
+    }*/
 
     /* MENU */
 
-    window->draw(right_arrow_sprite_menu);
+    //window->draw(right_arrow_sprite_menu);
 
     window->display();
     controller->getInterface()->setActive(false);
@@ -787,13 +790,13 @@ void Level_Editor::EventMainWindow(sf::Event event){
 
         /* EVENT TEXT SWITCH WIDGET */
 
-        if(tsw_page_texture.CollisionLeftArrow(mouse_position.x, mouse_position.y) && page_menu == 0){
-            tsw_page_texture.Previous();
-            page_texture = tsw_page_texture.getPositionList();
+        if(tsw_page_texture->CollisionLeftArrow(mouse_position.x, mouse_position.y) && page_menu == 0){
+            tsw_page_texture->Previous();
+            page_texture = tsw_page_texture->getPositionList();
         }
-        else if(tsw_page_texture.CollisionRightArrow(mouse_position.x, mouse_position.y) && page_menu == 0){
-            tsw_page_texture.Next();
-            page_texture = tsw_page_texture.getPositionList();
+        else if(tsw_page_texture->CollisionRightArrow(mouse_position.x, mouse_position.y) && page_menu == 0){
+            tsw_page_texture->Next();
+            page_texture = tsw_page_texture->getPositionList();
         }
 
         if(tsw_phase_level.CollisionLeftArrow(mouse_position.x, mouse_position.y) && page_menu == 3){
@@ -868,7 +871,7 @@ void Level_Editor::EventMainWindow(sf::Event event){
 
         /* EVENT CLICK BUTTON WIDGET */
 
-        if(bw_back.Contains(mouse_position)){
+        if(bw_back->Contains(mouse_position)){
 
             dialog_sauv_level->show();
         }
@@ -949,11 +952,11 @@ void Level_Editor::EventMainWindow(sf::Event event){
             bw_clear_time_mode.unHighlight();
         }
 
-        if(bw_back.Contains(mouse_position)){
-            bw_back.setHighlight(31, sf::Color::White);
+        if(bw_back->Contains(mouse_position)){
+            bw_back->setHighlight(31, sf::Color::White);
         }
         else{
-            bw_back.unHighlight();
+            bw_back->unHighlight();
         }
 
         if(is_entity_placing == true){

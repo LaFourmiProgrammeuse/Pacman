@@ -8,9 +8,9 @@
 #include "controller.h"
 #include "dialog_sauv_level.h"
 
-#include "text_switch_widget.h"
-#include "button_widget.h"
-#include "file_tools.h"
+#include "GameDev/text_switch_widget.h"
+#include "GameDev/button_widget.h"
+#include "GameDev/file_tools.h"
 
 #include "SFML/Graphics.hpp"
 
@@ -44,15 +44,15 @@ private:
     Controller *controller;
     Dialog_Sauv_Level *dialog_sauv_level;
 
-    //Texture used : page : 0
+    //Texture used : page 0
     sf::Sprite sprite_to_set;
     sf::RectangleShape frame_sprite_to_set;
     Button_Widget bw_label_texture_used;
     bool sprite_set;
 
     //System page texture : page 0
-    Text_Switch_Widget tsw_page_texture;
-    sf::RectangleShape border_page_texture;
+    Text_Switch_Widget *tsw_page_texture;
+    sf::RectangleShape *border_page_texture;
     QList<sf::RectangleShape *> list_border_texture_sprite;
     QList<sf::Sprite *> list_texture_sprite;
     int page_texture;
@@ -104,7 +104,7 @@ private:
 
     //Menu Editor
     QList<Button_Widget *> list_bw_menu_editor;
-    Button_Widget bw_back;
+    Button_Widget *bw_back;
     sf::Sprite right_arrow_sprite_menu;
     int page_menu;
 

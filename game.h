@@ -7,8 +7,8 @@
 #include "controller.h"
 #include "level.h"
 
-#include "matrix.h"
-#include "button_widget.h"
+#include "GameDev/matrix.h"
+#include "GameDev/button_widget.h"
 
 class Controller;
 class Level;

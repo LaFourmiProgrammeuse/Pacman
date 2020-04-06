@@ -4,8 +4,8 @@
 #include <QDebug>
 #include <QVector>
 
-#include "file_tools.h"
-#include "matrix.h"
+#include "GameDev/file_tools.h"
+#include "GameDev/matrix.h"
 
 #include <SFML/Graphics.hpp>
 

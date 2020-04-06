@@ -159,7 +159,7 @@ Menu::Menu(Controller *controller)
     txt_level_page->setFont(*font_bebas);
     txt_level_page->setFillColor(sf::Color::White);
 
-    tsw_page_level->AddString(txt_level_page);
+    tsw_page_level->AddString(txt_level_page); qDebug() << "test1";
 
     QDir dir_level_official("release/Level");
     for(int i = 0; i < dir_level_official.entryInfoList().size(); i++){
@@ -222,6 +222,8 @@ Menu::Menu(Controller *controller)
     sprite_background_1.setPosition(450, 0);
     sprite_background_1.setScale(1.64, 2.94);
 
+    qDebug() << "test";
+
 }
 
 void Menu::Event(sf::Event event){
@@ -278,7 +280,7 @@ void Menu::Event(sf::Event event){
                         controller->CreateLevelEditor(level);
 
                         controller->getInterface()->setEditorWindowSize();
-                        controller->getInterface()->Draw();
+                        //controller->getInterface()->Draw();
                     }
 
                     controller->getInterface()->setVisibleMainWindow(true);

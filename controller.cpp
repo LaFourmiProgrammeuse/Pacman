@@ -31,7 +31,7 @@ void Controller::run(){
 
     while(1){
 
-        //qDebug() << "Controller loop";
+        qDebug() << "Controller loop";
 
         sf::Clock clock;
 

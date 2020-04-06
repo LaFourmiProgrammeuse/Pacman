@@ -4,10 +4,10 @@
 #include <QDir>
 #include <QFileDialog>
 
-#include <button_widget.h>
-#include "text_switch_widget.h"
-#include "file_tools.h"
-#include "event_handler.h"
+#include <GameDev/button_widget.h>
+#include "GameDev/text_switch_widget.h"
+#include "GameDev/file_tools.h"
+#include "GameDev/event_handler.h"
 
 #include "controller.h"
 #include "interface.h"
