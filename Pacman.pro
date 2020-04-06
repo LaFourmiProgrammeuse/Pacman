@@ -33,27 +33,28 @@ FORMS += \
 
 
 #LIB SFML
-INCLUDEPATH += $$_PRO_FILE_PWD_/SFML-2.5.1/include
-DEPENDPATH += $$_PRO_FILE_PWD_/SFML-2.5.1/include
+INCLUDEPATH += $$PWD/SFML-2.5.1/include
+DEPENDPATH += $$PWD/SFML-2.5.1/include
 
-unix: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/linux/lib -lsfml-window
-else:win32: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/window/lib -lsfml-window
+unix: LIBS += -L$$PWD/SFML-2.5.1/linux/lib -lsfml-window
+else:win32: LIBS += -L$$PWD/SFML-2.5.1/window/lib -lsfml-window
 
-unix: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/linux/lib -lsfml-graphics
-else:win32: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/window/lib -lsfml-graphics
+unix: LIBS += -L$$PWD/SFML-2.5.1/linux/lib -lsfml-graphics
+else:win32: LIBS += -L$$PWD/SFML-2.5.1/window/lib -lsfml-graphics
 
-unix: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/linux/lib -lsfml-network
-else:win32: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/window/lib -lsfml-network
+unix: LIBS += -L$$PWD/SFML-2.5.1/linux/lib -lsfml-network
+else:win32: LIBS += -L$$PWD/SFML-2.5.1/window/lib -lsfml-network
 
-unix: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/linux/lib -lsfml-system
-else:win32: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/window/lib -lsfml-system
+unix: LIBS += -L$$PWD/SFML-2.5.1/linux/lib -lsfml-system
+else:win32: LIBS += -L$$PWD/SFML-2.5.1/window/lib -lsfml-system
 
-unix: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/linux/lib -lsfml-audio
-else:win32: LIBS += -L$$_PRO_FILE_PWD_/SFML-2.5.1/window/lib -lsfml-audio
+unix: LIBS += -L$$PWD/SFML-2.5.1/linux/lib -lsfml-audio
+else:win32: LIBS += -L$$PWD/SFML-2.5.1/window/lib -lsfml-audio
 
 #LIB GAMEDEV
-INCLUDEPATH += $$_PRO_FILE_PWD_/Lib_GameDev/include
-DEPENDPATH += $$_PRO_FILE_PWD_/Lib_GameDev/include
+INCLUDEPATH += $$PWD/Lib_GameDev/include
+DEPENDPATH += $$PWD/Lib_GameDev/include
 
-win32: LIBS += -L$$_PRO_FILE_PWD_/Lib_GameDev/window/lib/ -lLib_GameDev
-else:unix: LIBS += -L$$_PRO_FILE_PWD_/Lib_GameDev/linux/lib/ -lLib_GameDev
+win32: LIBS += -L$$PWD/Lib_GameDev/window/lib -lLib_GameDev
+else:unix: LIBS += -L$$PWD/Lib_GameDev/linux/lib -lLib_GameDev
+
