@@ -18,5 +18,4 @@ int main(int argc, char *argv[]){
     Controller controller;
 
     return app.exec();
-    //return 1;
 }
